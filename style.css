@@ -1,0 +1,37 @@
+.hidden { display: none; } /* 画面切り替え用 */
+#game-area { margin-top: 20px; padding: 20px; border: 1px solid #ccc; }
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(8, 50px); /* 8列 */
+    grid-template-rows: repeat(8, 50px); /* 8行 */
+    gap: 2px;
+    background-color: #333;
+    border: 5px solid #555;
+}
+.cell {
+    width: 50px;
+    height: 50px;
+    background-color: #008000; /* オセロの緑 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.disc {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* 丸くする */
+    display: none; /* 最初は非表示 */
+}
+/* 黒石と白石のスタイル */
+.disc.black {
+    background-color: black;
+    display: block;
+}
+.disc.white {
+    background-color: white;
+    display: block;
+}
+
+

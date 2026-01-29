@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>オンラインオセロ</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1>オンラインオセロ</h1>
+
+    <div id="menu-area">
+        <button id="create-btn">部屋を作る</button>
+        <hr>
+        <input type="text" id="room-id-input" placeholder="部屋IDを入力">
+        <button id="join-btn">部屋に入る</button>
+    </div>
+
+    <div id="game-area" class="hidden">
+        <p>部屋ID: <span id="display-room-id">-</span></p>
+        <div id="message">相手の接続を待っています...</div>
+        
+    </div>
+    <div id="board"></div> 
+    <button id="pass">パス</button> 
+    <button id="finish">終了</button> 
+    
+    <div id="output"></div>
+
+    
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
