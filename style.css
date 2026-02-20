@@ -1,5 +1,14 @@
 .hidden { display: none; } /* 画面切り替え用 */
-#game-area { margin-top: 20px; padding: 20px; border: 1px solid #ccc; }
+#game-area { 
+    margin-top: 20px;
+
+    background: radial-gradient(circle, #444, #000);
+    color: white;
+    border-radius: 50px;
+    padding: 12px 30px;
+    border: 3px solid white;
+    font-weight: bold;
+}
 
 :root{
     background-image: url(othello.jpg);
