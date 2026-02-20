@@ -14,6 +14,8 @@ const passbtn = document.getElementById("pass");
 
 const finishbtn = document.getElementById('finish');
 
+const pfBtn = document.getElementById('pf-btm');
+
 let boardData = [];
 let myColor = ""
 let room_id = ""
@@ -30,6 +32,7 @@ socket.onmessage = (event) => {
     if (data.type === "room_created") {
         // 部屋が作られたらIDを表示して画面を切り替える
         roomIdSpan.textContent = data.room_id;
+        menuArea.classList.remove('flex');
         menuArea.classList.add('hidden');
         gameArea.classList.remove('hidden');
     }    
@@ -37,6 +40,7 @@ socket.onmessage = (event) => {
         console.log("繋がった")       
         menuArea.classList.add('hidden');
         gameArea.classList.add('hidden');
+        pfBtn.classList.remove('hidden');
         for(let i = 0; i < BOARD_SIZE; i++) {
             for(let j = 0; j < BOARD_SIZE; j++) {
                 boardData[i][j] = data.board[i][j]
@@ -106,6 +110,8 @@ function init() {
         boardData[i] = Array(BOARD_SIZE).fill(0);
     }
     board.classList.add('hidden');
+    pfBtn.classList.add('hidden');
+
     passbtn.onclick = () => onPassClick();
     finishbtn.onclick = () => onFinishClick();
 }

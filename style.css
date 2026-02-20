@@ -1,85 +1,163 @@
-.hidden { display: none; } /* 画面切り替え用 */
-#game-area { 
-    margin-top: 20px;
+.hidden { display: none !important; } /* 画面切り替え用 */
 
-    background: radial-gradient(circle, #444, #000);
-    color: white;
-    border-radius: 50px;
-    padding: 12px 30px;
-    border: 3px solid white;
-    font-weight: bold;
-}
-
-:root{
-    background-image: url(othello.jpg);
-}
-
-#board {
-    display: grid;
-    grid-template-columns: repeat(8, 50px); /* 8列 */
-    grid-template-rows: repeat(8, 50px); /* 8行 */
-    gap: 2px;
-    /*
-    background-color: #333;
-    border: 5px solid #555;
-    */
-}
-.cell {
-    width: 50px;
-    height: 50px;
-    background-color: #008000; /* オセロの緑 */
+/* ===== 全体レイアウト ===== */
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    cursor: pointer;
-}
-.disc {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%; /* 丸くする */
-    display: none; /* 最初は非表示 */
-}
-/* 黒石と白石のスタイル */
-.disc.black {
-    background-color: black;
-    display: block;
-}
-.disc.white {
-    background-color: white;
-    display: block;
+    justify-content: flex-start;
+    box-sizing: border-box;
 }
 
+:root {
+    background-image: url(othello.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* ===== タイトル ===== */
 #title {
-    font-size: 50px;
+    font-size: clamp(28px, 6vw, 50px); /* 画面幅に合わせて自動調整 */
     font-weight: bold;
     text-align: center;
     background: linear-gradient(to right, black 50%, white 50%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: inline-block;      
-    padding: 20px 60px;         
-    border-radius: 100px;       
-    border: 3px solid white;  
+    display: inline-block;
+    padding: clamp(10px, 2vw, 20px) clamp(20px, 5vw, 60px);
+    border-radius: 100px;
+    border: 3px solid white;
+    margin-bottom: 20px;
+    max-width: 90vw;
 }
-#create-btn, #join-btn, #pass, #finish
-{
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;             
-    border: 4px solid white;
- 
-    background: radial-gradient(circle at 30% 30%, #666, #000);
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
+
+/* ===== メニューエリア ===== */
+
+#menu-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 400px;
 }
-#room-id-input, #output
-{
+
+#menu-area hr {
+    width: 100%;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== ゲームエリア ===== */
+#game-area {
+    margin-top: 20px;
     background: radial-gradient(circle, #444, #000);
     color: white;
     border-radius: 50px;
     padding: 12px 30px;
     border: 3px solid white;
     font-weight: bold;
+    text-align: center;
+    max-width: 90vw;
 }
 
+/* ===== ボード ===== */
+#board {
+    display: grid;
+    grid-template-columns: repeat(8, clamp(35px, 10vw, 50px));
+    grid-template-rows: repeat(8, clamp(35px, 10vw, 50px));
+    gap: 2px;
+    margin-top: 16px;
+}
+
+.cell {
+    width: clamp(35px, 10vw, 50px);
+    height: clamp(35px, 10vw, 50px);
+    background-color: #008000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.disc {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    display: none;
+}
+
+.disc.black {
+    background-color: black;
+    display: block;
+}
+
+.disc.white {
+    background-color: white;
+    display: block;
+}
+
+/* ===== ボタン ===== */
+#create-btn, #join-btn, #pass, #finish {
+    width: clamp(60px, 15vw, 75px);
+    height: clamp(60px, 15vw, 75px);
+    border-radius: 50%;
+    border: 4px solid white;
+    background: radial-gradient(circle at 30% 30%, #666, #000);
+    color: white;
+    font-weight: bold;
+    font-size: clamp(12px, 3vw, 16px);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* パス・終了ボタンを横並びに */
+#pass, #finish {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 8px 6px 0;
+}
+
+/* ===== 入力・出力 ===== */
+#room-id-input, #output {
+    background: radial-gradient(circle, #444, #000);
+    color: white;
+    border-radius: 50px;
+    padding: 12px 30px;
+    border: 3px solid white;
+    font-weight: bold;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#room-id-input {
+    width: 100%;
+}
+
+#output {
+    margin-top: 12px;
+    width: 100%;
+    max-width: min(400px, 90vw);
+    word-break: break-all;
+}
+
+/* ===== スマホ向け微調整 ===== */
+@media (max-width: 480px) {
+    body {
+        padding: 12px 8px;
+    }
+
+    #title {
+        font-size: clamp(20px, 7vw, 32px);
+    }
+
+    #game-area {
+        padding: 10px 16px;
+        border-radius: 30px;
+    }
+}
