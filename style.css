@@ -101,10 +101,23 @@ body {
 }
 
 /* ===== ボタン ===== */
-#create-btn, #join-btn, #pass, #finish {
-    width: clamp(60px, 15vw, 75px);
+#pass, #finish {
+    width: clamp(20px, 15vw, 75px);
     height: clamp(60px, 15vw, 75px);
     border-radius: 50%;
+    border: 4px solid white;
+    background: radial-gradient(circle at 30% 30%, #666, #000);
+    color: white;
+    font-weight: bold;
+    font-size: clamp(12px, 3vw, 16px);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+#create-btn, #join-btn {
+    width: clamp(100px, 25vw, 140px);
+    height: clamp(60px, 15vw, 75px);
+    border-radius: 50px;
     border: 4px solid white;
     background: radial-gradient(circle at 30% 30%, #666, #000);
     color: white;
@@ -123,7 +136,7 @@ body {
 }
 
 /* ===== 入力・出力 ===== */
-#room-id-input, #output {
+#room-id-input{
     background: radial-gradient(circle, #444, #000);
     color: white;
     border-radius: 50px;
@@ -135,12 +148,26 @@ body {
     text-align: center;
 }
 
+#output {
+    background: radial-gradient(circle, #444, #000);
+    color: white;
+    border-radius: 50px;
+    padding: 20px 30px;
+    border: 3px solid white;
+    font-weight: bold;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+
+  
+}
+
 #room-id-input {
     width: 100%;
 }
 
 #output {
-    margin-top: 12px;
+    margin-top: 30px;
     width: 100%;
     max-width: min(400px, 90vw);
     word-break: break-all;
